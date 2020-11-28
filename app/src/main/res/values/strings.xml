@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">TimeSavingBox</string>
-    <string name="tv_input_time_msg">開始・終了時間、メモを入力してください</string>
-    <string name="tv_start_time">開始時間</string>
-    <string name="tv_end_time">開始時間</string>
+    <string name="tv_input_time_msg">開始・終了日時、メモを入力してください</string>
+    <string name="tv_start_time">開始日時</string>
+    <string name="tv_end_time">終了日時</string>
     <string name="tv_memo">メモ</string>
     <string name="btn_save">保存</string>
 </resources>
