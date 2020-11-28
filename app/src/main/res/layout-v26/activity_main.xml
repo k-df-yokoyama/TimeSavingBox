@@ -55,7 +55,7 @@
         android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
-        android:inputType="text"
+        android:inputType="datetime"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/tv_input_time_msg" />
 
@@ -66,7 +66,7 @@
         android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
-        android:inputType="text"
+        android:inputType="datetime"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/et_start_time" />
@@ -88,5 +88,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="100dp" />
+
+    <TextView
+        android:id="@+id/tv_saved_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

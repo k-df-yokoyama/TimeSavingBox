@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -48,5 +49,9 @@ class MainActivity : AppCompatActivity() {
 
         //delete input value
         //etMemo.setText("")
+
+        val tvSavedMsg = findViewById<TextView>(R.id.tv_saved_msg).apply {
+            text = getResources().getString(R.string.tv_saved_msg)
+        }
     }
 }
