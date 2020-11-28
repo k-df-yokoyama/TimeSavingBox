@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import java.nio.file.attribute.UserDefinedFileAttributeView
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -24,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onSaveButtonClick(view: View) {
-        val etMemo = findViewById<EditText>(R.id.editText)
+        val etMemo = findViewById<EditText>(R.id.et_memo)
         val memo = etMemo.text.toString()
 
         val db = _helper.writableDatabase
