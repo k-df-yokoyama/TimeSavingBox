@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import kotlin.with as with1
 
 class MainActivity : AppCompatActivity() {
     //データベースヘルパーオブジェクト。
@@ -52,6 +53,20 @@ class MainActivity : AppCompatActivity() {
 
         val tvSavedMsg = findViewById<TextView>(R.id.tv_saved_msg).apply {
             text = getResources().getString(R.string.tv_saved_msg)
+        }
+    }
+
+    fun onNewButtonClick(view: View) {
+        val etStartTime = findViewById<EditText>(R.id.et_start_time)
+        val etEndTime = findViewById<EditText>(R.id.et_end_time)
+        val etMemo = findViewById<EditText>(R.id.et_memo)
+
+        //delete input value
+        etStartTime.setText("")
+        etEndTime.setText("")
+        etMemo.setText("")
+        val tvSavedMsg = findViewById<TextView>(R.id.tv_saved_msg).apply {
+            text = ""
         }
     }
 }
