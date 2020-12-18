@@ -26,11 +26,9 @@ class MainActivity : AppCompatActivity() {
 
     fun onSaveButtonClick(view: View) {
         val etStartTime = findViewById<EditText>(R.id.et_start_time)
-        val startTime = etStartTime.text.toString()
         val etEndTime = findViewById<EditText>(R.id.et_end_time)
-        val endTime = etEndTime.text.toString()
         val etMemo = findViewById<EditText>(R.id.et_memo)
-        val memo = etMemo.text.toString()
+        var task:Task = Task(etStartTime.text.toString(), etEndTime.text.toString(), etMemo.text.toString())
 
         val db = _helper.writableDatabase
 
@@ -43,9 +41,9 @@ class MainActivity : AppCompatActivity() {
         val formatter = DateTimeFormatter.ISO_DATE
         val formatted = current.format(formatter)
         stmt.bindString(1, formatted)
-        stmt.bindString(2, startTime)
-        stmt.bindString(3, endTime)
-        stmt.bindString(4, memo)
+        stmt.bindString(2, task.startTime)
+        stmt.bindString(3, task.endTime)
+        stmt.bindString(4, task.memo)
         stmt.executeInsert()
 
         //delete input value
