@@ -11,9 +11,6 @@ import java.time.format.DateTimeFormatter
 import kotlin.with as with1
 
 class MainActivity : AppCompatActivity() {
-    //データベースヘルパーオブジェクト。
-    //private val _helper = DatabaseHelper(this@MainActivity)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,9 +30,6 @@ class MainActivity : AppCompatActivity() {
         //val db = _helper.writableDatabase
         val db = TaskDatabase.createInstance(applicationContext)
 
-        //val sqlInsert = "INSERT INTO timesavingbox (_id, date, starttime, endtime, memo) VALUES (?, ?, ?, ?, ?, ?)"
-        //val sqlInsert = "INSERT OR REPLACE INTO timesavingbox (_id, date, starttime, endtime, memo) VALUES (1, ?, ?, ?, ?)"
-        //var stmt = db.compileStatement(sqlInsert)
         //TODO("LocalDate format yyyy-MM-dd 2019-07-04 is expected") //https://codechacha.com/ja/kotlin-examples-current-date-and-time/
 
         val current = LocalDate.now()
@@ -44,11 +38,6 @@ class MainActivity : AppCompatActivity() {
 
         var task:Task = Task(formatted, etStartTime.text.toString(), etEndTime.text.toString(), etMemo.text.toString())
 
-        //stmt.bindString(1, formatted)
-        //stmt.bindString(2, task.startTime)
-        //stmt.bindString(3, task.endTime)
-        //stmt.bindString(4, task.memo)
-        //stmt.executeInsert()
         db.taskDao().insertTask(task)
 
         //delete input value

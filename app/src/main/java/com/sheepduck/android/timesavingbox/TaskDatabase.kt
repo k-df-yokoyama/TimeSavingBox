@@ -14,8 +14,6 @@ abstract class TaskDatabase : RoomDatabase() {
 
         val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                //database.execSQL("ALTER TABLE timesavingbox ALTER COLUMN _id SET NOT NULL;")
-                //database.execSQL("ALTER TABLE timesavingbox ALTER COLUMN date SET NOT NULL;")
                 database.execSQL("""
                 CREATE TABLE new_timesavingbox (
                     _id INTEGER NOT NULL,
