@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         val etMemo = findViewById<EditText>(R.id.et_memo)
 
         //val db = _helper.writableDatabase
-        val db = TaskDatabase.createInstance(applicationContext)
+        val db = TaskDatabase.getInstance(applicationContext)
 
         //TODO("LocalDate format yyyy-MM-dd 2019-07-04 is expected") //https://codechacha.com/ja/kotlin-examples-current-date-and-time/
 

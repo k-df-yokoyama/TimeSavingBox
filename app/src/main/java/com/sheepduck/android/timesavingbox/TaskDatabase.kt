@@ -33,12 +33,18 @@ abstract class TaskDatabase : RoomDatabase() {
             }
         }
 
-        fun createInstance(context: Context): TaskDatabase {
-            // ToDo: マイグレーションの実装。
-            return Room.databaseBuilder(context, TaskDatabase::class.java, DATABASE_NAME)
+        @Volatile
+        private var INSTANCE: TaskDatabase? = null;
+
+        fun getInstance(context: Context): TaskDatabase =
+            INSTANCE ?: synchronized(this) {
+                INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
+            }
+
+        private fun buildDatabase(context: Context) =
+            Room.databaseBuilder(context, TaskDatabase::class.java, DATABASE_NAME)
                 .allowMainThreadQueries()
                 .addMigrations(MIGRATION_1_2, MIGRATION_1_2).build()
-        }
     }
 
     abstract fun taskDao(): TaskDao
