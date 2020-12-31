@@ -17,8 +17,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        //ヘルパーオブジェクトの開放。
-        //_helper.close()
         super.onDestroy()
     }
 
@@ -26,9 +24,6 @@ class MainActivity : AppCompatActivity() {
         val etStartTime = findViewById<EditText>(R.id.et_start_time)
         val etEndTime = findViewById<EditText>(R.id.et_end_time)
         val etMemo = findViewById<EditText>(R.id.et_memo)
-
-        //val db = _helper.writableDatabase
-        val db = TaskDatabase.getInstance(applicationContext)
 
         //TODO("LocalDate format yyyy-MM-dd 2019-07-04 is expected") //https://codechacha.com/ja/kotlin-examples-current-date-and-time/
 
@@ -38,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         var task:Task = Task(formatted, etStartTime.text.toString(), etEndTime.text.toString(), etMemo.text.toString())
 
-        db.taskDao().insertTask(task)
+        TaskRepository.insertTask(applicationContext, task)
 
         //delete input value
         //etMemo.setText("")
