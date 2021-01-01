@@ -1,14 +1,12 @@
 package com.sheepduck.android.timesavingbox
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import androidx.room.Room
+import androidx.appcompat.app.AppCompatActivity
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import kotlin.with as with1
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +29,10 @@ class MainActivity : AppCompatActivity() {
         val formatter = DateTimeFormatter.ISO_DATE
         val formatted = current.format(formatter)
 
-        var task:Task = Task(formatted, etStartTime.text.toString(), etEndTime.text.toString(), etMemo.text.toString())
+        var task:Task = Task(formatted,
+            etStartTime.text.toString(),
+            etEndTime.text.toString(),
+            etMemo.text.toString())
 
         TaskRepository.insertTask(applicationContext, task)
 
@@ -40,6 +41,19 @@ class MainActivity : AppCompatActivity() {
 
         val tvSavedMsg = findViewById<TextView>(R.id.tv_saved_msg).apply {
             text = getResources().getString(R.string.tv_saved_msg)
+        }
+
+        val arrayTask = TaskRepository.loadAllTask(applicationContext)
+        val etAllTask = findViewById<TextView>(R.id.tv_all_task).apply {
+            val allTaskBuilder = StringBuilder()
+            for (i in 0 until arrayTask.size) {
+                allTaskBuilder.append(arrayTask.get(i).date).append(",")
+                    .append(arrayTask.get(i).starttime).append(",")
+                    .append(arrayTask.get(i).endtime).append(",")
+                    .append(arrayTask.get(i).memo)
+                    .append(System.getProperty("line.separator"))
+            }
+            text = allTaskBuilder
         }
     }
 
