@@ -1,13 +1,16 @@
 package com.sheepduck.android.timesavingbox
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
-
+/*
 @Entity(tableName = "timesavingbox",
-    primaryKeys = arrayOf("_id", "date"))
+    indices = {@Index(value ={"date"}, unique = true)})
+ */
+@Entity(tableName = "timesavingbox")
 class Task(date:String, starttime:String, endtime:String, memo:String) {
-    //@PrimaryKey(autoGenerate = true)
-    var _id: Int = 1
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
     var date:String = date
     var starttime:String? = starttime
     var endtime:String? = endtime

@@ -47,7 +47,8 @@ class MainActivity : AppCompatActivity() {
         val etAllTask = findViewById<TextView>(R.id.tv_all_task).apply {
             val allTaskBuilder = StringBuilder()
             for (i in 0 until arrayTask.size) {
-                allTaskBuilder.append(arrayTask.get(i).date).append(",")
+                allTaskBuilder.append(arrayTask.get(i).id).append(",")
+                    .append(arrayTask.get(i).date).append(",")
                     .append(arrayTask.get(i).starttime).append(",")
                     .append(arrayTask.get(i).endtime).append(",")
                     .append(arrayTask.get(i).memo)
