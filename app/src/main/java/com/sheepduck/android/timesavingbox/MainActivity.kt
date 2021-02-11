@@ -45,16 +45,18 @@ class MainActivity : AppCompatActivity() {
 
         val arrayTask = TaskRepository.loadAllTask(applicationContext)
         val etAllTask = findViewById<TextView>(R.id.tv_all_task).apply {
-            val allTaskBuilder = StringBuilder()
+            var allTaskBuilder = StringBuilder()
             for (i in 0 until arrayTask.size) {
-                allTaskBuilder.append(arrayTask.get(i).id).append(",")
+                val singleTaskBuilder = StringBuilder()
+                singleTaskBuilder.append(arrayTask.get(i).id).append(",")
                     .append(arrayTask.get(i).date).append(",")
                     .append(arrayTask.get(i).starttime).append(",")
                     .append(arrayTask.get(i).endtime).append(",")
                     .append(arrayTask.get(i).memo)
                     .append(System.getProperty("line.separator"))
+                allTaskBuilder = singleTaskBuilder.append(allTaskBuilder)
+                text = allTaskBuilder
             }
-            text = allTaskBuilder
         }
     }
 
